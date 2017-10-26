@@ -20,7 +20,7 @@
     "error.js"
   ],
   "bin": {
-    "next": "./dist/bin/next"
+    "o2team-next": "./dist/bin/next"
   },
   "scripts": {
     "build": "taskr",
@@ -112,7 +112,7 @@
     "url": "0.11.0",
     "uuid": "3.1.0",
     "walk": "^2.3.9",
-    "webpack": "3.3.0",
+    "webpack": "3.8.1",
     "webpack-dev-middleware": "1.11.0",
     "webpack-hot-middleware": "2.18.2",
     "write-file-webpack-plugin": "4.1.0",
