@@ -20,6 +20,7 @@
     "error.js"
   ],
   "bin": {
+    "next": "./dist/bin/next",
     "o2team-next": "./dist/bin/next"
   },
   "scripts": {
