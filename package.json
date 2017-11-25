@@ -65,7 +65,7 @@
     "prop-types-exact": "^1.1.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "send": "^0.15.3",
+    "send": "^0.16.1",
     "styled-jsx": "^1.0.8",
     "xss-filters": "1.2.7"
   },
