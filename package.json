@@ -1,6 +1,6 @@
 {
   "name": "o2team-next",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "Minimalistic framework for server-rendered React applications",
   "main": "./dist/server/next.js",
   "license": "MIT",
