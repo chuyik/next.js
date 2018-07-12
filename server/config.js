@@ -6,7 +6,7 @@ const cache = new Map()
 const defaultConfig = {
   webpack: null,
   webpackDevMiddleware: null,
-  poweredByHeader: true,
+  poweredByHeader: false,
   distDir: '.next',
   assetPrefix: '',
   configOrigin: 'default',
