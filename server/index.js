@@ -86,8 +86,8 @@ export default class Server {
     return this.run(req, res, parsedUrl)
       .catch((err) => {
         if (!this.quiet) console.error(err)
-        res.statusCode = 451
-        res.end(STATUS_CODES[451])
+        res.statusCode = this.dev ? 500 : 451
+        res.end(STATUS_CODES[res.statusCode])
       })
   }
 
@@ -207,7 +207,7 @@ export default class Server {
 
           const compilationErr = await this.getCompilationError()
           if (compilationErr) {
-            const customFields = { statusCode: 451 }
+            const customFields = { statusCode: this.dev ? 500 : 451 }
             return await renderScriptError(req, res, page, compilationErr, customFields, this.renderOpts)
           }
         }
@@ -273,8 +273,8 @@ export default class Server {
     if (req.method === 'GET' || req.method === 'HEAD') {
       await this.render404(req, res, parsedUrl)
     } else {
-      res.statusCode = 451
-      res.end(STATUS_CODES[451])
+      res.statusCode = this.dev ? 501 : 451
+      res.end(STATUS_CODES[res.statusCode])
     }
   }
 
@@ -298,7 +298,7 @@ export default class Server {
     if (this.dev) {
       const compilationErr = await this.getCompilationError()
       if (compilationErr) {
-        res.statusCode = 451
+        res.statusCode = 500
         return this.renderErrorToHTML(compilationErr, req, res, pathname, query)
       }
     }
@@ -311,7 +311,7 @@ export default class Server {
         return this.renderErrorToHTML(null, req, res, pathname, query)
       } else {
         if (!this.quiet) console.error(err)
-        res.statusCode = 451
+        res.statusCode = this.dev ? 500 : 451
         return this.renderErrorToHTML(err, req, res, pathname, query)
       }
     }
@@ -326,7 +326,7 @@ export default class Server {
     if (this.dev) {
       const compilationErr = await this.getCompilationError()
       if (compilationErr) {
-        res.statusCode = 451
+        res.statusCode = 500
         return renderErrorToHTML(compilationErr, req, res, pathname, query, this.renderOpts)
       }
     }
@@ -336,7 +336,7 @@ export default class Server {
     } catch (err2) {
       if (this.dev) {
         if (!this.quiet) console.error(err2)
-        res.statusCode = 451
+        res.statusCode = 500
         return renderErrorToHTML(err2, req, res, pathname, query, this.renderOpts)
       } else {
         throw err2
